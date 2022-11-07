@@ -1,0 +1,146 @@
+
+<body>
+  <div id="start-form-container">
+    <h2>New simulation</h2>
+    <form id="start-form">
+      <%# POPULATION SIZE %>
+      <div class="input-container">
+	<div class="label-icon-container">
+	  <label for="population-size">Population size</label>
+	  <div class="fa fa-info-circle tooltip-icon">
+            <span class="tooltip-text">The number of people that will be used in the simulation</span>
+	  </div>
+	</div>
+	<input id="population-size" name="population-size" type="text" />
+      </div>
+      <%# Intensive Care Beds%>
+      <div class="input-container">
+	<div class="label-icon-container">
+	  <label for="icb">ICB per 100 000</label>
+	  <div class="fa fa-info-circle tooltip-icon">
+	    <span class="tooltip-text">How many intensive care beds per 100 000 people in the simulation. People in critical condition may be saved if in a icb</span>
+	  </div>
+	</div>
+	<input class="start-form-range-slider" id="icb" name="icb" type="range" value="25" min="1" max="50" step="1" oninput="icb_range.value = icb.value">
+	<output name="icb_range" id="icb_range" for="icb"></output>
+      </div>
+      <%# INFECTION RATE %>	
+      <div class="input-container">
+	<div class="label-icon-container">
+	  <label for="infectionrate">Infection rate</label>
+	  <div class="fa fa-info-circle tooltip-icon">
+	    <span class="tooltip-text">Infection rate decides how infectous the virus will be which determines the rate of spread</span>
+	  </div>
+	</div>
+	<input class="start-form-range-slider" id="infection_rate" name="infection_rate" type="range" value="11.0" min="2.0" max="20.0" step="0.01" oninput="infection_rate_range.value = infection_rate.value">
+	<output name="infection_rate_range" id="infection_rate_range" for="infectionrate"></output>
+      </div>
+      <%# DEATH RATE%> 
+      <div class="input-container">
+	<div class="label-icon-container">
+	  <label for="death_rate">Death rate</label>
+	  <div class="fa fa-info-circle tooltip-icon">
+	    <span class="tooltip-text">Death rate determines how deadly the disease is. Note: Death rate + asymptomatic rate can't be above 100%</span>
+	  </div>
+	</div>
+	<input class="start-form-range-slider" id="death_rate" name="death_rate" type="range" value="50" min="1" max="100" oninput="death_rate_range.value = death_rate.value"/>
+	<output name="death_rate_range" id="death_rate_range" for="death_rate"></output>
+      </div>
+      <%# ASYMPTOMATIC RATE%>
+      <div class="input-container">
+	<div class="label-icon-container">
+	  <label for="asymptomatic_rate">Asymptomatic rate</label>
+	  <div class="fa fa-info-circle tooltip-icon">
+            <span class="tooltip-text">The asymptomatic rate determines the rate of infected that doesn't develop any symptomts. Note: Asymptomatic rate + death rate can't be above 100%</span>
+	  </div>
+	</div>
+	<input class="start-form-range-slider" id="asymptomatic_rate" name="asymptomatic_rate" type="range" value="50" min="1" max="100" oninput="asymptomatic_rate_range.value = asymptomatic_rate.value"/>
+	<output name="asymptomatic_rate_range" id="asymptomatic_rate_range" for="asymptomatic_rate"></output>
+      </div>
+      <%# INCUBATION TIME %>
+      <div class="input-container">
+	<div class="from-to-input">
+	  <div class="label-icon-container">
+            <label class="from-to-input-title">Incubation time</label>
+            <div class="fa fa-info-circle tooltip-icon">
+              <span class="tooltip-text">The incubuation time decides the minimum and maximum amount of days it takes for someone to develop symptoms</span>
+            </div>
+	  </div>
+	  <div class="from-to-input-container">
+            <input id="incub-time-from" name="incub-time-from" type="text" placeholder="From"/>
+            <input id="incub-time-to" name="incub-time-to" type="text" placeholder="To"/>
+	  </div>
+	</div>
+      </div>
+  </div>
+  </form>
+</div>
+
+<button class="form-button" id="start-button">START SIMULATION</button>
+<button class="form-button stop-button">STOP SIMULATION</button>
+
+<div id="results">
+  <div id="results-header">
+    <h2>Results</h2>
+  </div>
+  <div id="results-content">
+    <div class="loader"></div>
+    <div id="results-facts-and-values"> 
+      <h3 id="result-pop-size"></h3>
+      <ul id="results-list">
+        <li id="result-deaths"></li>
+        <li id="result-recovered"></li>
+        <li id="result-not-infected"></li>
+        <%# KEY VALUES %>
+        <li id="r0-result"></li>   
+      </ul>
+    </div>
+  </div>
+  <button id="save-result-button">SAVE RESULT AND GRAPHS</button>
+</div>
+
+<div id="countermeasures">
+  <div id="countermeasures-title">
+    <span id="countermeasure-title-text">Active Countermeasure</span>
+    <div class="fa fa-info-circle tooltip-icon">
+      <span class="tooltip-text">
+	The currently active countermeasure for the simulation. <br />
+	- None: No countermeasures taken<br />
+	- Social distancing: Toggle social distancing<br />
+	- Lockdown: Toggle lockdown
+      </span>
+    </div>
+  </div>
+  <div id="countermeasures-buttons">
+    <button class="countermeasure-button" id="none">None</button><button class="countermeasure-button" id="socialdistancing">Social Distancing</button><button class="countermeasure-button" id="lockdown">Lockdown</button>
+  </div>
+</div>
+
+<div id="total_charts">
+  <div id="line_chart_total"></div>
+  <div id="pie_chart_total"></div>
+  <div id="location-stat-chart"></div>
+</div>
+
+
+<footer class="footer">
+  <div class="footer-content">
+    <span id="footer-text">Made by CORONA - Albin, Alexander, Andreas, Anton, Johan, Robin, Sebastian | Operativsystem och processorienterad programmering (1DT096) 2020</span>
+    <a href="https://github.com/uu-dsp-os-ospp-2020/asterix"><img border="0" alt="GitHub | Asterix" title="GitHub | Asterix" src="/images/GitHub_Logo.png" height="35px"/></a>
+  </div>
+</footer>
+
+<script
+  src="https://code.jquery.com/jquery-3.5.0.min.js"
+  integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+  crossorigin="anonymous"
+  ></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+  window.jQuery ||
+  document.write(
+  '<script src="js/vendor/jquery-3.5.0.min.js"><\/script>'
+      );
+  </script>
+</body>
+

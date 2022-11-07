@@ -1,0 +1,58 @@
+<div>
+Här ska vi då visa statistik o grafer
+</div>
+
+<div id="pie_chart" style="width:800px;height:400px;float:left">
+  <button onclick="updatePie()">hello</button>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<script>
+
+  var myJason = JSON.parse(data);
+  alert(myJason[0].tick);
+  
+  var pie_data = [{
+        values: [10, 0, 0, 0],
+        labels: ['Healthy', 'Infected', 'Deceased', 'Recovered'],
+        marker: {
+        colors: ['rgb(0, 204, 0)', 'rgb(255, 0, 0)', 'rgb(0, 0, 0)', 'rgb(255, 255, 0),']
+        },
+        type: 'pie'
+        }];
+
+        var pie_layout = {
+        height: 300,
+        width: 400
+        };
+
+        Plotly.newPlot('pie_chart', pie_data, pie_layout);
+        var running = false;
+        function startLoop(){
+        while(running){
+        setTimeout(function() { updatePie(); }, 5000);
+        }
+        }
+
+        var i = 0, howManyTimes = 3;
+
+        var healthy_data = [8, 5, 1];
+        var infected_data = [2, 3, 6];
+        var deceased_data = [0, 1, 2];
+        var recovered_data = [0, 1, 2];
+
+        function updatePie() {
+        
+        var update = {
+        'values': [[healthy_data[i], infected_data[i], deceased_data[i], recovered_data[i]]]
+        }
+        
+        Plotly.restyle('pie_chart', update, [0]);
+        console.log(i);
+        i++;
+        if( i < howManyTimes ){
+                setTimeout( updatePie, 3000 );
+                }
+                }
+                </script>

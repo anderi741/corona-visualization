@@ -1,0 +1,508 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+@media print {
+    html {
+        position: relative;
+        min-height: 100%
+    }
+}
+
+
+body {
+    margin: 0 0;
+    background: #DBDBDB;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-height: 100%;
+}
+
+@media print {
+    body {
+        margin: 0 0 50px;
+        padding: 25px
+    }
+}
+
+/*Removes styling from all range-sliders*/
+input[type="range"] {
+	-webkit-appearance: none;
+}
+
+
+header {
+    border-bottom: 1px solid lightgrey;
+    text-align: center;
+    width: 100%;
+    background: #FFFF;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+@media print {
+    header {
+        border-bottom: 1px solid #1E9574;
+    }
+}
+
+#start-form-container {
+    margin-top: 15px;
+    border-top: #1E9574 20px solid;
+    width: 60%;  
+    background: #f8f8ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#start-form-container h2 {
+    margin-top: 15px;
+}
+
+#start-form {
+    width: 100%;
+}
+
+#start-form div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+#start-form div input {
+    align-self: center;
+    margin-top: 4px;
+    width: 30%;    
+}
+.input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.label-icon-container {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-container label {
+    margin-bottom: 0px;
+}
+
+
+.tooltip-icon {
+    margin-left: 15px;
+    margin-top: 0px !important;
+    position: relative;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    font-weight: 'Helvetica', 'Arial', sans-serif;
+    color: white;
+    background: #5e5e5e;
+    box-shadow: 2px 2px 2px 1px rgba(54,54,54,0.53);
+    -moz-box-shadow: 2px 2px 2px 1px rgba(54,54,54,0.53);
+    width: 300px;
+    position: absolute;
+    right: 50%;
+    left: 50%; 
+    top: 16px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    z-index: 100;
+}
+
+.tooltip-icon:hover .tooltip-text {
+    visibility: visible;
+}
+
+
+/*SJÄLVA SLIDERS*/
+.start-form-range-slider {
+    appearance: none;
+    /* 	width: 100%; */
+    height: 10px; 
+    border-radius: 5px;
+    border: #C6C6C6 1px solid;
+    background: #d6d6d6; 
+    outline: none; /*Removes that ugly html blue outline*/
+    opacity: 0.7; 
+}
+
+/*DET MAN DRAR PÅ SLIDERN*/
+/*FUNKAR NOG BARA I CHROME KOLLA UPP*/
+.start-form-range-slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	border: 1px solid #24A27F;
+	height: 25px;
+	width: 25px;
+	border-radius: 50%;
+	background: #37b995;
+	cursor: pointer;
+}
+
+.start-form-range-slider::-webkit-slider-thumb:active {
+    background: #2E9679;
+}
+
+.start-form-range-slider::-moz-range-thumb {
+    -webkit-appearance: none;
+	border: 1px solid #24A27F;
+	height: 25px;
+	width: 25px;
+	border-radius: 50%;
+	background: #37b995;
+	cursor: pointer;
+}
+
+.start-form-range-slider::-moz-range-thumb:active {
+    background: #2E9679;
+}
+
+.from-to-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    align-self: center;
+}
+
+.from-to-input-container {
+    width: 80%;
+    flex-direction: row !important;
+    justify-content: center;
+}
+
+.from-to-input div input {
+    margin: 5px;
+}
+
+.form-button {
+    -webkit-appearance: none;
+    border: none;
+    width: 60%;
+    margin-top: 20px;
+    height: 60px;
+    color: white;
+    font-size: 30px;
+}
+
+@media print {
+    .form-button {
+        display: none;
+    }
+}
+
+#start-button {
+    background: #4DCB87;
+}
+
+#start-button:hover {
+    background: #24C296;
+}
+
+#start-button:active {
+    background: #1B8769;
+}
+
+.stop-button {
+    background: #E41F1F;
+    display: none;
+}
+
+@media print {
+    .stop-button {
+        display: none;
+    }
+}
+
+.stop-button:hover {
+    background: #CF1C1C;
+}
+
+.stop-button:active {
+    background: #B01919;
+}
+
+.done-button {
+    background: #FFA500;
+}
+
+@media print {
+    .done-button {
+        display: none;
+    }
+}
+
+.done-button:hover {
+    background: #E59400;
+}
+
+.done-button:active {
+    background: #FFAE19;
+}
+
+@media print {
+    .form-button .stop-button .done-button {
+        display: none;
+    }
+}
+
+
+#total_charts {
+    display: flex;
+    max-width: 800px;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+#countermeasures {
+    display: none;
+    margin-top: 20px;
+    width: 800px;
+    text-align: center;
+}
+
+#countermeasures-title {
+    border-top: #1E9574 5px solid;
+    background-color: white;
+    padding: 5px;
+}
+
+#countermeasure-title-text {
+    font-size: 18px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+#countermeasures-buttons {   
+    background-color: #1E9574;
+}
+
+.countermeasure-button {
+    border: none;
+    padding: 4px 30px;
+    font-size: 16px;
+    background-color: #1E9574;
+    color: white;
+    height: 100%;
+    margin: 0;
+    border-radius: 0;
+}
+
+
+.countermeasure-button:not(:last-child) {
+    border-right: 1px solid #ddd;
+}
+
+.countermeasure-button:hover {
+    background-color: #0f8872;
+}
+
+#results {
+    display: none;
+    width: 60%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-top: #1E9574 20px solid;
+    background-color: white;
+    text-align: center;
+}
+
+@media print {
+    #results { 
+        border-top: none;
+    }
+}
+
+#results-header {
+    padding-top: 10px;
+    width: 90%;
+    display: inline-block;
+    text-align: center;
+    border-bottom: lightgray 1px solid;
+}
+
+@media print {
+    #results-header {
+        display: none;
+    }
+}
+
+#results-content {
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.loader {
+    display: inline-block;
+    border: 8px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 8px solid #1E9574;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#results-facts-and-values {
+    text-align: center;
+}
+
+#results-list {
+    margin-top: 10px;
+    list-style: none; 
+    /* KÖR DETTA OM LISTAN BLIR LÅNG SÅ DELAR DEN AUTOMATISKT UPP SIG
+    display: flex;
+    flex-direction: column !important;
+    flex-wrap: wrap; */
+
+    /* Detta är när det är färre än typ 5 element så blir det två kolumner*/
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+
+    text-align: center;
+    max-height: 80%;
+}
+
+#results-list li::before {
+    content: "\2022";  /* \2022 är unicode för bullet */
+    color: #1E9574; 
+    font-size: 24px;
+    display: inline-block;
+    width: 1em; 
+    margin-left: -1em;
+    vertical-align: middle;
+
+}  
+
+
+.result-list-text {
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+#save-result-button {
+    border: none;
+    background-color: #1E9574;
+    color: white;
+}
+
+@media print {
+    #save-result-button {
+        display: none;
+    }
+}
+
+#save-result-button:hover {
+    background-color: #0f8872;
+}
+
+#save-result-button:active {
+    background-color: #157158;
+}
+
+.footer {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    background-color: #FFFF;
+    color: #383838;
+    border-top: 1px solid lightgrey;
+    overflow: hidden;
+}
+
+
+.footer span {
+    vertical-align: middle;
+    line-height: 50px;
+}
+
+.footer img {
+    position: absolute;
+    height: 35px;
+    width: auto;
+    margin-top: 5px;
+    margin-right: 5%;
+    float: right;
+}
+
+@media print {
+    .footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+
+    }
+    .footer img {
+        display: none;
+    }
+}
+
+
+/* OM VI VILL HA GRAFERNA VID PRINT SÅ DOM HAMNAR RÄTT PÅ SIDORNA
+@media print {
+    #total_charts {
+        display: table;
+    }
+    #line_chart_total {
+        display: inline-block;
+        overflow: hidden;
+        page-break-after: always;
+    }
+    #pie_chart_total {
+        display: inline-block;
+    }
+    #location-stat-chart {
+        display: inline-block;
+    }
+} */
+
+@media print {
+    #total_charts {
+        display: table;
+    }
+    #line_chart_total {
+        display: inline-block;
+        overflow: hidden;
+        page-break-after: always;
+    }
+    #pie_chart_total {
+        display: none;
+    }
+    #location-stat-chart {
+        display: none;
+    }
+}
